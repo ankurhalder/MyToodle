@@ -5,10 +5,13 @@ const todosSlice = createSlice({
   initialState: [],
   reducers: {
     addTodo: (state, action) => {
+      const timestamp = Date.now();
       const newTodo = {
-        id: Date.now(),
+        id: timestamp,
         text: action.payload,
         completed: false,
+        createdAt: timestamp,
+        updatedAt: timestamp,
       };
       state.push(newTodo);
     },
@@ -17,6 +20,7 @@ const todosSlice = createSlice({
       const todo = state.find((todo) => todo.id === id);
       if (todo) {
         todo.text = text;
+        todo.updatedAt = Date.now();
       }
     },
     deleteTodo: (state, action) => {
