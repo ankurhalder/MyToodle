@@ -1,0 +1,59 @@
+@mixin responsive($width, $height, $orientation) {
+  @if $orientation == portrait {
+    @media (max-width: #{$width}) and (max-height: #{$height}) {
+      @content;
+    }
+  } @else if $orientation == landscape {
+    @media (max-width: #{$height}) and (max-height: #{$width}) {
+      @content;
+    }
+  }
+}
+
+@include responsive(1566px, 800px, portrait) {
+}
+
+@include responsive(1566px, 800px, landscape) {
+}
+
+@include responsive(1024px, 1366px, portrait) {
+}
+
+@include responsive(1024px, 1366px, landscape) {
+}
+
+@include responsive(768px, 1024px, portrait) {
+}
+
+@include responsive(768px, 1024px, landscape) {
+}
+
+@include responsive(430px, 932px, portrait) {
+}
+
+@include responsive(430px, 932px, landscape) {
+}
+
+@include responsive(414px, 896px, portrait) {
+}
+
+@include responsive(414px, 896px, landscape) {
+}
+
+@include responsive(390px, 844px, portrait) {
+}
+
+@include responsive(390px, 844px, landscape) {
+}
+
+@include responsive(375px, 812px, portrait) {
+}
+
+@include responsive(375px, 812px, landscape) {
+}
+
+@include responsive(360px, 760px, portrait) {
+}
+
+@include responsive(360px, 760px, landscape) {
+}

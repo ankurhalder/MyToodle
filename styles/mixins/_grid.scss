@@ -1,0 +1,13 @@
+@mixin grid-container(
+  $columns,
+  $gutter: 20px,
+  $min-width: 320px,
+  $max-width: 1200px
+) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-gap: $gutter;
+  min-width: $min-width;
+  max-width: $max-width;
+  margin: 0 auto;
+}
