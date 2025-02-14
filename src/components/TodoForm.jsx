@@ -16,13 +16,16 @@ const TodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todo__form" onSubmit={handleSubmit}>
       <ReusableInput
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a new todo..."
+        className="todo__form__input"
       />
-      <ReusableButton type="submit">Add Todo</ReusableButton>
+      <ReusableButton type="submit" className="todo__form__add-todo-button">
+        Add Todo
+      </ReusableButton>
     </form>
   );
 };

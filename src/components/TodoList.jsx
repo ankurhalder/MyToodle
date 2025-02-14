@@ -45,34 +45,44 @@ const TodoList = () => {
   const getTimeDisplay = (timestamp) => new Date(timestamp).toLocaleString();
 
   return (
-    <div>
-      <div style={{ marginBottom: "1rem" }}>
+    <div className="todo__list">
+      <div className="todo__list__search">
         <ReusableInput
           value={searchQuery}
           onChange={(e) => dispatch(setSearchQuery(e.target.value))}
           placeholder="Search todos..."
         />
       </div>
-
-      <div style={{ marginBottom: "1rem" }}>
-        <label>Sort By: </label>
+      <div className="todo__list__sort">
+        <label className="todo__list__sort__label">Sort By: </label>
         <select
+          className="todo__list__sort__select"
           value={sortMethod}
           onChange={(e) => dispatch(setSortMethod(e.target.value))}
         >
-          <option value="updatedAt">Last Updated</option>
-          <option value="createdAt">Creation Time</option>
+          <option
+            className="todo__list__sort__select__updatedAt"
+            value="updatedAt"
+          >
+            Last Updated
+          </option>
+          <option
+            className="todo__list__sort__select__createdAt"
+            value="createdAt"
+          >
+            Creation Time
+          </option>
         </select>
       </div>
 
       <ReusableButton
         onClick={() => dispatch(deleteAllTodos())}
-        style={{ marginBottom: "1rem" }}
+        className="todo__list__delete-all-button"
       >
         Delete All
       </ReusableButton>
 
-      <ul style={{ listStyleType: "none", padding: 0 }}>
+      <ul className="todo__list__items">
         {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}

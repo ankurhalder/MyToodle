@@ -60,12 +60,17 @@ const ExportButton = () => {
   };
 
   return (
-    <div style={{ marginTop: "1rem" }}>
-      <label style={{ marginRight: "0.5rem" }}>Export Format:</label>
+    <div className="todo__list__export__buttons">
+      <label
+        className="todo__list__export__buttons__label"
+        htmlFor="exportType"
+      >
+        Export Format:
+      </label>
       <select
+        className="todo__list__export__buttons__select"
         value={exportType}
         onChange={(e) => setExportType(e.target.value)}
-        style={{ marginRight: "0.5rem" }}
       >
         <option value="json">JSON</option>
         <option value="excel">Excel</option>

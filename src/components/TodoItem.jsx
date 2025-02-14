@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import ReusableInput from "./common/ReusableInput";
 import ReusableButton from "./common/ReusableButton";
@@ -15,38 +15,45 @@ const TodoItem = React.memo(
     getTimeDisplay,
   }) => {
     return (
-      <li
-        style={{
-          marginBottom: "0.5rem",
-          padding: "0.5rem",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-        }}
-      >
+      <li className="todo__list__items__item">
         {isEditing ? (
-          <>
+          <Fragment>
             <ReusableInput
+              className="todo__list__items__item__input"
               value={editingText}
               onChange={(e) => onChangeEditingText(e.target.value)}
             />
-            <ReusableButton onClick={onSave}>Save</ReusableButton>
-          </>
+            <ReusableButton
+              className="todo__list__items__item__save-button"
+              onClick={onSave}
+            >
+              Save
+            </ReusableButton>
+          </Fragment>
         ) : (
-          <>
-            <div>
+          <Fragment>
+            <div className="todo__list__items__item__todo">
               <strong>{todo.text}</strong>
             </div>
-            <div style={{ fontSize: "0.8rem", color: "#666" }}>
+            <div className="todo__list__items__item__time">
               Added: {getTimeDisplay(todo.createdAt)}
               {todo.updatedAt !== todo.createdAt && (
                 <> | Updated: {getTimeDisplay(todo.updatedAt)}</>
               )}
             </div>
-            <ReusableButton onClick={onEdit} style={{ marginRight: "0.5rem" }}>
+            <ReusableButton
+              onClick={onEdit}
+              className="todo__list__items__item__edit-button"
+            >
               Edit
             </ReusableButton>
-            <ReusableButton onClick={onDelete}>Delete</ReusableButton>
-          </>
+            <ReusableButton
+              className="todo__list__items__item__delete-button"
+              onClick={onDelete}
+            >
+              Delete
+            </ReusableButton>
+          </Fragment>
         )}
       </li>
     );
