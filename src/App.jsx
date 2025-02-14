@@ -3,8 +3,8 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Todo List with Redux and Local Storage</h1>
+    <div className="app">
+      <h1>MyToodle</h1>
       <TodoForm />
       <TodoList />
     </div>
