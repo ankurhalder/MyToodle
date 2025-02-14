@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../features/todosSlice";
+import ReusableInput from "./common/ReusableInput";
+import ReusableButton from "./common/ReusableButton";
 
 const TodoForm = () => {
   const [text, setText] = useState("");
@@ -15,13 +17,12 @@ const TodoForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
+      <ReusableInput
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add a new todo..."
       />
-      <button type="submit">Add Todo</button>
+      <ReusableButton type="submit">Add Todo</ReusableButton>
     </form>
   );
 };
