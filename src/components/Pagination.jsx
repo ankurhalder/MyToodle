@@ -20,11 +20,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <div className="pagination">
+    <div className="todo__list__footer__pagination">
       <ReusableButton
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="pagination__prev"
+        className="todo__list__footer__pagination__previous"
       >
         <svg width="16" height="16" viewBox="0 0 16 16">
           <path
@@ -40,11 +40,16 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pageNumbers.map((page, index) => (
         <span key={index}>
           {page === "..." ? (
-            <span className="pagination__ellipsis">...</span>
+            <span
+              className="
+              todo__list__footer__pagination__ellipsis"
+            >
+              ...
+            </span>
           ) : (
             <ReusableButton
               onClick={() => onPageChange(page)}
-              className={`pagination__number ${
+              className={`todo__list__footer__pagination__pagination__number ${
                 currentPage === page ? "active" : ""
               }`}
             >
@@ -57,7 +62,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <ReusableButton
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="pagination__next"
+        className="todo__list__footer__pagination__next"
       >
         <svg width="16" height="16" viewBox="0 0 16 16">
           <path
