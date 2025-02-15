@@ -123,14 +123,18 @@
     @include neu-shadow-inset(4px, 4px, 8px);
 
     &__search {
-      margin-bottom: 1rem;
+      margin: 0 0 2.5% 0;
       input {
         width: 100%;
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.75rem 1.5rem;
         background: #e0e0e0;
         border: none;
         border-radius: 12px;
+        font-family: var(--font-roboto);
+        font-size: var(--font-13);
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: var(--black);
         @include neu-shadow-inset(4px, 4px, 8px);
         transition: box-shadow 0.2s ease;
         &:focus {
@@ -141,9 +145,11 @@
     }
 
     &__delete-all-button {
+      font-family: var(--font-elianto);
+      font-size: var(--font-13);
+      letter-spacing: 0px;
+      flex: 1;
       padding: 0.5rem 1rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
       width: 100%;
       color: #333;
       @include neu-button();
