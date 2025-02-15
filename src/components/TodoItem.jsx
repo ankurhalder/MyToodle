@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import { Fragment, memo } from "react";
 import PropTypes from "prop-types";
 import ReusableInput from "./common/ReusableInput";
 import ReusableButton from "./common/ReusableButton";
 
-const TodoItem = React.memo(
+const TodoItem = memo(
   ({
     todo,
     isEditing,
