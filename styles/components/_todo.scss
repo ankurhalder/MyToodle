@@ -173,11 +173,14 @@
 
         &__todo {
           flex: 1;
-          font-size: 1rem;
-          color: #333;
+          font-family: var(--font-roboto);
+          text-align: justify;
+          line-height: 1.25;
+          font-size: var(--font-12);
+          color: #444;
           word-break: break-word;
           strong {
-            display: inline-block;
+            font-weight: 500;
           }
           mark {
             background: rgba(255, 235, 59, 0.7);
