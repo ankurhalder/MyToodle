@@ -15,17 +15,20 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin: 0 auto;
   border-radius: 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   @include flex.flex-container(column, nowrap, center, none);
   &__header {
+    font-family: var(--font-playfair);
+    font-size: var(--font-7);
+    letter-spacing: 2px;
+    font-weight: 500;
     text-align: center;
-    font-size: 2rem;
-    color: #333333;
-    margin-bottom: 1.5rem;
+    color: var(--black);
+    margin: 0 0 2.5% 0;
   }
   &__form {
     display: flex;
