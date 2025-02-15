@@ -13,19 +13,19 @@ body {
   height: 100dvh;
   max-width: 800px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   padding: 1rem 2rem;
   margin: 0 auto;
   border-radius: 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  @include flex.flex-container(column, nowrap, center, none);
+  @include flex.flex-container(column, nowrap, none, none);
   &__header {
     font-family: var(--font-playfair);
     font-size: var(--font-7);
     letter-spacing: 2px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     color: var(--black);
     margin: 0 0 2.5% 0;
