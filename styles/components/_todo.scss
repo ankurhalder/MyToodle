@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "../base/new-media-quries";
+@use "../mixins/flex";
 
 body {
   background-image: url("/japan.png");
@@ -8,18 +10,17 @@ body {
 }
 
 .todo {
-  height: 100%;
-  width: 100%;
-  max-height: 100dvh;
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 100dvh;
+  max-width: 800px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 2rem;
   margin: 0 auto;
   border-radius: 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  @include flex.flex-container(column, nowrap, center, none);
   &__header {
     text-align: center;
     font-size: 2rem;
