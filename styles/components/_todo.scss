@@ -13,8 +13,8 @@ body {
   height: 100dvh;
   max-width: 800px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
   padding: 1rem 2rem;
   margin: 0 auto;
   border-radius: 50px;
@@ -35,11 +35,10 @@ body {
     gap: 1rem;
     margin: 0 0 2.5% 0;
     &__input {
-      flex: 1;
-      padding: 0.75rem;
-      border: 1px solid #ced4da;
+      flex: 7;
+      padding: 0.75rem 1.5rem;
+
       border-radius: 6px;
-      font-size: 1rem;
       transition: border-color 0.2s ease;
       &:focus {
         outline: none;
@@ -47,6 +46,7 @@ body {
       }
     }
     &__add-todo-button {
+      flex: 1;
       background-color: #28a745;
       color: #ffffff;
       border: none;
