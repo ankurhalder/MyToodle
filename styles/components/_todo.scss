@@ -1,6 +1,5 @@
 @use "sass:color";
 
-$font-family: "Inter", sans-serif;
 $base-font-size: 16px;
 $border-radius: 6px;
 $transition-speed: 0.3s;
@@ -48,13 +47,21 @@ $small-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
 }
 
+body {
+  background-image: url("/japan.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .todo {
-  font-family: $font-family;
+  height: 100%;
+  width: 100%;
+  max-height: 100dvh;
+  max-width: 1200px;
   background: $color-bg;
   padding: 2rem;
-  max-width: 600px;
-  margin: 2rem auto;
-  border-radius: 8px;
+  margin: 0 auto;
+  border-radius: 50px;
   box-shadow: $box-shadow;
 
   &__header {
