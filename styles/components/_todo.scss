@@ -2,25 +2,22 @@
 @use "../base/new-media-quries";
 @use "../mixins/flex";
 
-body {
-  background-image: url("/japan.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+$neu-bg: #e0e0e0;
+$neu-light: #ffffff;
+$neu-dark: #bebebe;
+$neu-radius: 12px;
 
 .todo {
   height: 100dvh;
   max-width: 800px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+  background: $neu-bg;
   padding: 1rem 2rem;
-  margin: 0 auto;
-  border-radius: 50px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  border-radius: 30px;
+  box-shadow: 8px 8px 16px $neu-dark, -8px -8px 16px $neu-light;
   overflow: hidden;
   @include flex.flex-container(column, nowrap, none, none);
+
   &__header {
     font-family: var(--font-playfair);
     font-size: var(--font-7);
@@ -30,34 +27,45 @@ body {
     color: var(--black);
     margin: 0 0 2.5% 0;
   }
+
   &__form {
     display: flex;
     gap: 1rem;
     margin: 0 0 2.5% 0;
+
     &__input {
       flex: 7;
       padding: 0.75rem 1.5rem;
-
-      border-radius: 6px;
-      transition: border-color 0.2s ease;
+      background: $neu-bg;
+      border: none;
+      border-radius: $neu-radius;
+      // Inset shadow gives a carved look
+      box-shadow: inset 4px 4px 8px $neu-dark, inset -4px -4px 8px $neu-light;
+      transition: box-shadow 0.2s ease;
       &:focus {
         outline: none;
-        border-color: #007bff;
+        box-shadow: inset 2px 2px 4px $neu-dark, inset -2px -2px 4px $neu-light;
       }
     }
+
     &__add-todo-button {
       flex: 1;
-      background-color: #28a745;
-      color: #ffffff;
+      background: $neu-bg;
+      color: #333;
       border: none;
-      border-radius: 6px;
+      border-radius: $neu-radius;
+      box-shadow: 4px 4px 8px $neu-dark, -4px -4px 8px $neu-light;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
       padding: 0.5rem 1rem;
       font-size: 1rem;
       &:hover:not(:disabled) {
-        background-color: #218838;
-        transform: scale(1.05);
+        transform: translateY(-2px);
+        box-shadow: 6px 6px 12px $neu-dark, -6px -6px 12px $neu-light;
+      }
+      &:active {
+        transform: translateY(2px);
+        box-shadow: inset 4px 4px 8px $neu-dark, inset -4px -4px 8px $neu-light;
       }
       &:disabled {
         opacity: 0.6;
@@ -65,69 +73,78 @@ body {
       }
     }
   }
+
   &__list {
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 6px;
+    background: $neu-bg;
+    border-radius: $neu-radius;
     padding: 1rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 4px 4px 8px $neu-dark, inset -4px -4px 8px $neu-light;
+
     &__search {
       margin-bottom: 1rem;
       input {
         width: 100%;
         padding: 0.5rem;
-        border: 1px solid #ced4da;
-        border-radius: 6px;
+        background: $neu-bg;
+        border: none;
+        border-radius: $neu-radius;
+        box-shadow: inset 4px 4px 8px $neu-dark, inset -4px -4px 8px $neu-light;
         font-size: 0.9rem;
-        transition: border-color 0.2s ease;
+        transition: box-shadow 0.2s ease;
         &:focus {
           outline: none;
-          border-color: #007bff;
+          box-shadow: inset 2px 2px 4px $neu-dark,
+            inset -2px -2px 4px $neu-light;
         }
       }
     }
+
     &__delete-all-button {
-      background-color: #dc3545;
-      color: #ffffff;
+      background: $neu-bg;
+      color: #333;
       border: none;
-      border-radius: 6px;
+      border-radius: $neu-radius;
+      box-shadow: 4px 4px 8px $neu-dark, -4px -4px 8px $neu-light;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
       padding: 0.5rem 1rem;
       font-size: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
       &:hover:not(:disabled) {
-        background-color: #c82333;
-        transform: scale(1.05);
+        transform: translateY(-2px);
+        box-shadow: 6px 6px 12px $neu-dark, -6px -6px 12px $neu-light;
+      }
+      &:active {
+        transform: translateY(2px);
+        box-shadow: inset 4px 4px 8px $neu-dark, inset -4px -4px 8px $neu-light;
       }
       &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
       }
-      margin-bottom: 1rem;
-      width: 100%;
     }
+
     &__items {
       list-style: none;
       padding: 0;
       margin: 0;
+
       &__item {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         padding: 0.75rem 0;
-        border-bottom: 1px solid
-          color.adjust(#ced4da, $lightness: 40%, $space: hsl);
         transition: background-color 0.2s ease;
         &:hover {
-          background-color: color.adjust(#ced4da, $lightness: 90%, $space: hsl);
+          background-color: color.scale($neu-bg, $lightness: 5%);
         }
+
         &__todo {
           flex: 1;
           font-size: 1rem;
-          color: #333333;
+          color: #333;
           word-break: break-word;
           strong {
             display: inline-block;
@@ -138,81 +155,107 @@ body {
             border-radius: 2px;
           }
         }
+
         &__time {
           font-size: 0.8rem;
-          color: #777777;
+          color: #777;
           margin: 0.5rem 1rem;
         }
+
         &__input {
           flex: 1;
           margin-right: 1rem;
           padding: 0.5rem;
-          border: 1px solid #ced4da;
-          border-radius: 6px;
+          background: $neu-bg;
+          border: none;
+          border-radius: $neu-radius;
+          box-shadow: inset 4px 4px 8px $neu-dark,
+            inset -4px -4px 8px $neu-light;
           font-size: 1rem;
-          transition: border-color 0.2s ease;
+          transition: box-shadow 0.2s ease;
           &:focus {
             outline: none;
-            border-color: #007bff;
+            box-shadow: inset 2px 2px 4px $neu-dark,
+              inset -2px -2px 4px $neu-light;
           }
         }
+
         &__save-button,
         &__edit-button,
         &__delete-button {
-          background: transparent;
+          background: $neu-bg;
           border: none;
+          border-radius: $neu-radius;
+          box-shadow: 4px 4px 8px $neu-dark, -4px -4px 8px $neu-light;
           cursor: pointer;
           padding: 0.3rem;
-          transition: transform 0.2s ease;
+          transition: box-shadow 0.2s ease, transform 0.2s ease;
           &:hover {
-            transform: scale(1.1);
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 12px $neu-dark, -6px -6px 12px $neu-light;
+          }
+          &:active {
+            transform: translateY(2px);
+            box-shadow: inset 4px 4px 8px $neu-dark,
+              inset -4px -4px 8px $neu-light;
           }
           svg {
-            fill: #333333;
+            fill: #333;
           }
         }
       }
     }
+
     &__footer {
       margin-top: 1rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+
       &__pagination {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+
         &__previous,
         &__next,
         &__pagination__number {
-          background-color: #007bff;
-          color: #ffffff;
+          background: $neu-bg;
+          color: #333;
           border: none;
-          border-radius: 6px;
+          border-radius: $neu-radius;
+          box-shadow: 4px 4px 8px $neu-dark, -4px -4px 8px $neu-light;
           cursor: pointer;
-          transition: background-color 0.3s ease, transform 0.2s ease;
+          transition: box-shadow 0.2s ease, transform 0.2s ease;
           padding: 0.3rem 0.6rem;
           font-size: 0.9rem;
           &:hover:not(:disabled) {
-            background-color: #0056b3;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 12px $neu-dark, -6px -6px 12px $neu-light;
+          }
+          &:active {
+            transform: translateY(2px);
+            box-shadow: inset 4px 4px 8px $neu-dark,
+              inset -4px -4px 8px $neu-light;
           }
           &:disabled {
             opacity: 0.6;
             cursor: not-allowed;
           }
           &.active {
-            background-color: #0056b3;
+            background: color.scale($neu-bg, $lightness: 5%);
           }
         }
+
         &__ellipsis {
           padding: 0.3rem 0.6rem;
           font-size: 0.9rem;
-          color: #777777;
+          color: #777;
         }
       }
     }
+
     &__export {
       &__buttons {
         display: flex;
@@ -220,20 +263,25 @@ body {
         gap: 0.5rem;
         margin-top: 0.5rem;
         flex-wrap: wrap;
+
         &__label {
           font-size: 0.9rem;
-          color: #333333;
+          color: #333;
         }
+
         &__select {
           padding: 0.3rem 0.6rem;
-          border: 1px solid #ced4da;
-          border-radius: 6px;
-          background-color: #ffffff;
+          background: $neu-bg;
+          border: none;
+          border-radius: $neu-radius;
+          box-shadow: inset 4px 4px 8px $neu-dark,
+            inset -4px -4px 8px $neu-light;
           font-size: 0.9rem;
-          transition: border-color 0.2s ease;
+          transition: box-shadow 0.2s ease;
           &:focus {
-            border-color: #007bff;
             outline: none;
+            box-shadow: inset 2px 2px 4px $neu-dark,
+              inset -2px -2px 4px $neu-light;
           }
         }
       }
