@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, updateTodo, deleteAllTodos } from "../features/todosSlice";
 import {
   setSearchQuery,
-  setSortMethod,
   setEditing,
   setEditingText,
   clearEditing,
@@ -15,22 +14,17 @@ import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const todos = useSelector((state) => state.todos);
-  const { searchQuery, sortMethod, editingId, editingText } = useSelector(
+  const { searchQuery, editingId, editingText } = useSelector(
     (state) => state.ui
   );
   const dispatch = useDispatch();
 
   const filteredTodos = useMemo(() => {
-    let filtered = todos.filter((todo) =>
+    const filtered = todos.filter((todo) =>
       todo.text.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    if (sortMethod === "updatedAt") {
-      filtered = [...filtered].sort((a, b) => b.updatedAt - a.updatedAt);
-    } else if (sortMethod === "createdAt") {
-      filtered = [...filtered].sort((a, b) => b.createdAt - a.createdAt);
-    }
-    return filtered;
-  }, [todos, searchQuery, sortMethod]);
+    return filtered.sort((a, b) => b.createdAt - a.createdAt);
+  }, [todos, searchQuery]);
 
   const handleEdit = (id, text) => {
     dispatch(setEditing({ id, text }));
@@ -52,27 +46,6 @@ const TodoList = () => {
           onChange={(e) => dispatch(setSearchQuery(e.target.value))}
           placeholder="Search todos..."
         />
-      </div>
-      <div className="todo__list__sort">
-        <label className="todo__list__sort__label">Sort By: </label>
-        <select
-          className="todo__list__sort__select"
-          value={sortMethod}
-          onChange={(e) => dispatch(setSortMethod(e.target.value))}
-        >
-          <option
-            className="todo__list__sort__select__updatedAt"
-            value="updatedAt"
-          >
-            Last Updated
-          </option>
-          <option
-            className="todo__list__sort__select__createdAt"
-            value="createdAt"
-          >
-            Creation Time
-          </option>
-        </select>
       </div>
 
       <ReusableButton
