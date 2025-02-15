@@ -62,10 +62,9 @@
   max-width: 800px;
   background: #e0e0e0;
   padding: 1rem 2rem;
-  margin: 2rem auto;
+  margin: 0 auto;
   border-radius: 30px;
   @include neu-shadow-outset(8px, 8px, 16px);
-  overflow: hidden;
   @include flex.flex-container(column, nowrap, none, none);
 
   &__header {
@@ -76,6 +75,10 @@
     text-align: center;
     color: var(--black);
     margin: 0 0 2.5% 0;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      letter-spacing: 4px;
+    }
   }
 
   &__form {
