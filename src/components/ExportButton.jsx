@@ -76,7 +76,24 @@ const ExportButton = () => {
         <option value="excel">Excel</option>
         <option value="word">Word</option>
       </select>
-      <ReusableButton onClick={handleExport}>Export</ReusableButton>
+      <ReusableButton onClick={handleExport}>
+        <svg width="16" height="16" viewBox="0 0 16 16">
+          <path
+            d="M8 1v10M8 1l3 3M8 1l-3 3"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path
+            d="M2 14h12"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+      </ReusableButton>
     </div>
   );
 };

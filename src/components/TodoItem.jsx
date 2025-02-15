@@ -13,7 +13,20 @@ const TodoItem = React.memo(
     onSave,
     onDelete,
     getTimeDisplay,
+    searchQuery,
   }) => {
+    const highlightText = (text, query) => {
+      if (!query) return text;
+      const parts = text.split(new RegExp(`(${query})`, "gi"));
+      return parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase() ? (
+          <mark key={i}>{part}</mark>
+        ) : (
+          part
+        )
+      );
+    };
+
     return (
       <li className="todo__list__items__item">
         {isEditing ? (
@@ -27,13 +40,21 @@ const TodoItem = React.memo(
               className="todo__list__items__item__save-button"
               onClick={onSave}
             >
-              Save
+              <svg width="16" height="16" viewBox="0 0 16 16">
+                <path
+                  d="M2 8l4 4 8-8"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
             </ReusableButton>
           </Fragment>
         ) : (
           <Fragment>
             <div className="todo__list__items__item__todo">
-              <strong>{todo.text}</strong>
+              <strong>{highlightText(todo.text, searchQuery)}</strong>
             </div>
             <div className="todo__list__items__item__time">
               Added: {getTimeDisplay(todo.createdAt)}
@@ -45,13 +66,29 @@ const TodoItem = React.memo(
               onClick={onEdit}
               className="todo__list__items__item__edit-button"
             >
-              Edit
+              <svg width="16" height="16" viewBox="0 0 16 16">
+                <path
+                  d="M2 12l10-10 2 2-10 10H2v-2z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
             </ReusableButton>
             <ReusableButton
               className="todo__list__items__item__delete-button"
               onClick={onDelete}
             >
-              Delete
+              <svg width="16" height="16" viewBox="0 0 16 16">
+                <path
+                  d="M4 4l8 8M12 4l-8 8"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
             </ReusableButton>
           </Fragment>
         )}
@@ -74,6 +111,7 @@ TodoItem.propTypes = {
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   getTimeDisplay: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string,
 };
 
 export default TodoItem;
