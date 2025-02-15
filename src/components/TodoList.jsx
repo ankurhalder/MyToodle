@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, updateTodo, deleteAllTodos } from "../features/todosSlice";
 import {
@@ -66,7 +66,7 @@ const TodoList = () => {
   return (
     <div className="todo__list">
       {todos.length > 0 && (
-        <>
+        <Fragment>
           <div className="todo__list__search">
             <ReusableInput
               value={searchQuery}
@@ -80,7 +80,7 @@ const TodoList = () => {
           >
             Delete All
           </ReusableButton>
-        </>
+        </Fragment>
       )}
 
       <ul className="todo__list__items">
